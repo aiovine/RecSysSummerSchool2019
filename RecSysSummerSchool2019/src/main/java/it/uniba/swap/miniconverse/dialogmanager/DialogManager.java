@@ -31,9 +31,9 @@ public class DialogManager {
 		 * Each intent may return a textual response, put it in the "responseText" variable.
 		 * 
 		 */
-		//WRITE HERE
+		//START WRITING CODE HERE
 		
-		//END
+		//END CODE
 		return responseText;
 	}
 	
@@ -158,9 +158,12 @@ public class DialogManager {
 			System.out.print(">");
 			String text = s.nextLine();
 			
-			//Get the intent from the IntentRecognizer
 			QueryResult dfResult = null;
-			//QueryResult dfResult = dfConnector.getResponse("1234", text);
+			//Get the intent from the IntentRecognizer
+			//START WRITING CODE HERE
+
+			//END CODE
+			
 			String intent = dfResult.getIntent().getDisplayName();
 			
 			String response = dispatchIntent(userID + "", intent, text);
@@ -168,8 +171,12 @@ public class DialogManager {
 				response = dfResult.getFulfillmentText();
 			}
 			
-			System.out.println("Detected intent: " + dfResult.getIntent().getDisplayName());
+			System.out.println("Detected intent: " + intent);
 			System.out.println("Fulfillment text: " + response);
 		}
+		
+		
+		
+		
 	}
 }
