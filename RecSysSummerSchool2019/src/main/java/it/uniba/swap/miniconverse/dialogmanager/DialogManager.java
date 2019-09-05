@@ -158,21 +158,23 @@ public class DialogManager {
 			System.out.print(">");
 			String text = s.nextLine();
 			
-			QueryResult dfResult = null;
-			//Get the intent from the IntentRecognizer
-			//START WRITING CODE HERE
+			if (text != null && !text.equals("")) {
+				QueryResult dfResult = null;
+				//Get the intent from the IntentRecognizer
+				//START WRITING CODE HERE
 
-			//END CODE
-			
-			String intent = dfResult.getIntent().getDisplayName();
-			
-			String response = dispatchIntent(userID + "", intent, text);
-			if (response == null) {
-				response = dfResult.getFulfillmentText();
+				//END CODE
+				
+				String intent = dfResult.getIntent().getDisplayName();
+				
+				String response = dispatchIntent(userID + "", intent, text);
+				if (response == null) {
+					response = dfResult.getFulfillmentText();
+				}
+				
+				System.out.println("Detected intent: " + intent);
+				System.out.println("Fulfillment text: " + response);
 			}
-			
-			System.out.println("Detected intent: " + intent);
-			System.out.println("Fulfillment text: " + response);
 		}
 		
 		
