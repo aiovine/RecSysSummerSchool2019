@@ -124,6 +124,8 @@ public class DialogManager {
 	private static String resetProfile(int userID) {
 		boolean reset = new ServiceConnector().resetProfile(userID);
 		if (reset) {
+			recommendationList = null;
+			currentRecommendationIndex = -1;
 			return "The profile has been reset.";
 		}
 		return null;
