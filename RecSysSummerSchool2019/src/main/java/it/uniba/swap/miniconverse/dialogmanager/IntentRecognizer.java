@@ -33,7 +33,7 @@ public class IntentRecognizer {
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
 	 */
-	public QueryResult getResponse(String userID, String text) throws FileNotFoundException, IOException {
+	public QueryResult getResponse(int userID, String text) throws FileNotFoundException, IOException {
 		
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpGet request = new HttpGet(url + "?userID=" + userID + "&message=" + URLEncoder.encode(text, "UTF-8"));

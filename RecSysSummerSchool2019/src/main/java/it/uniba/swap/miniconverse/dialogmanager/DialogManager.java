@@ -19,7 +19,7 @@ public class DialogManager {
 	 * @throws UnsupportedOperationException
 	 * @throws IOException
 	 */
-	public static String dispatchIntent(String userID, String intent, String text) throws UnsupportedOperationException, IOException {
+	public static String dispatchIntent(int userID, String intent, String text) throws UnsupportedOperationException, IOException {
 		String responseText = null;
 		/* The dispatchIntent method must handle the following intents:
 		 * - preference: The user is expressing a preference (e.g. "I like The Matrix")
@@ -43,7 +43,7 @@ public class DialogManager {
 	 * @throws UnsupportedOperationException
 	 * @throws IOException
 	 */
-	private static String addPreferences(String userID, String message) throws UnsupportedOperationException, IOException {
+	private static String addPreferences(int userID, String message) throws UnsupportedOperationException, IOException {
 		String responseText = null;
 		SentimentAnalyzerConnector sentimentConnector = new SentimentAnalyzerConnector();
 		ServiceConnector serviceConnector = new ServiceConnector();
@@ -72,7 +72,7 @@ public class DialogManager {
 	 * @param userID ID of the user
 	 * @return A list of recommended items.
 	 */
-	private static String getRecommendations(String userID) {
+	private static String getRecommendations(int userID) {
 		String responseText = null;
 		ServiceConnector serviceConnector = new ServiceConnector();
 		
@@ -101,7 +101,7 @@ public class DialogManager {
 	 * @param userID ID of the current user
 	 * @return A textual explanation for the recommended item
 	 */
-	private static String getExplanation(String userID) {
+	private static String getExplanation(int userID) {
 		String responseText = null;
 		ServiceConnector serviceConnector = new ServiceConnector();
 		
@@ -121,7 +121,7 @@ public class DialogManager {
 	 * @param userID
 	 * @return
 	 */
-	private static String resetProfile(String userID) {
+	private static String resetProfile(int userID) {
 		boolean reset = new ServiceConnector().resetProfile(userID);
 		if (reset) {
 			return "The profile has been reset.";
@@ -166,7 +166,7 @@ public class DialogManager {
 				String intent = dfResult.getIntent();
 				System.out.println("Detected intent: " + intent);
 				
-				String response = dispatchIntent(userID + "", intent, text);
+				String response = dispatchIntent(userID, intent, text);
 				if (response == null) {
 					response = dfResult.getFulfillmentText();
 				}

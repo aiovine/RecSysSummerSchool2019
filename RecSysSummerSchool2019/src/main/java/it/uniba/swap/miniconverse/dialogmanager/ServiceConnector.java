@@ -23,12 +23,12 @@ import com.google.gson.JsonParser;
 public class ServiceConnector {
 	private static final String url = "http://90.147.102.235:8080/miniconverse/restService";
 	
-	public boolean addPreferences(String userID, List<Entity> entities) {
+	public boolean addPreferences(int userID, List<Entity> entities) {
 		try {
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpPost post = new HttpPost(url + "/addPreferences");
 			JsonObject body = new JsonObject();
-			body.addProperty("userID", userID);
+			body.addProperty("userID", userID + ""); //Cast to string
 			body.add("preferences", new Gson().toJsonTree(entities));
 			StringEntity bodyEntity = new StringEntity(body.toString());
 			post.addHeader("content-type", "application/json");
@@ -51,7 +51,7 @@ public class ServiceConnector {
 		return false;
 	}
 	
-	public boolean resetProfile(String userID) {
+	public boolean resetProfile(int userID) {
 		try {
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpGet request = new HttpGet(url + "/resetProfile?userID=" + userID);
@@ -67,7 +67,7 @@ public class ServiceConnector {
 		return false;
 	}
 	
-	public List<RecEntity> getRecommendations(String userID) {
+	public List<RecEntity> getRecommendations(int userID) {
 		try {
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpGet request = new HttpGet(url + "/getRecommendations?userID=" + userID);
@@ -84,7 +84,7 @@ public class ServiceConnector {
 		return null;
 	}
 	
-	public String getExplanation(String userID, String entityURI) {
+	public String getExplanation(int userID, String entityURI) {
 		try {
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpGet request = new HttpGet(url + "/explanation?userID=" + userID + "&entityURI=" + entityURI);
