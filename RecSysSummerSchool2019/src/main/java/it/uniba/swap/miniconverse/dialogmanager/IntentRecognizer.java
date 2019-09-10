@@ -23,7 +23,7 @@ import com.google.cloud.dialogflow.v2.TextInput.Builder;
  */
 public class IntentRecognizer {
 	
-	private String credentialsPath = "D:\\\\dottorato\\\\converse\\\\miniconverseagent-rlyfcf-6da2e5af023f.json";
+	private String credentialsFileName = "miniconverseagent-rlyfcf-6da2e5af023f.json";
 	private String agentName = "miniconverseagent-rlyfcf";
 	
 	/**
@@ -35,6 +35,8 @@ public class IntentRecognizer {
 	 * @throws FileNotFoundException 
 	 */
 	public QueryResult getResponse(String userID, String text) throws FileNotFoundException, IOException {
+		ClassLoader classLoader = this.getClass().getClassLoader();
+		String credentialsPath = classLoader.getResource(credentialsFileName).getPath();
 		GoogleCredentials cred = GoogleCredentials.fromStream(new FileInputStream(credentialsPath));
 		SessionsSettings settings = SessionsSettings.newBuilder().setCredentialsProvider(FixedCredentialsProvider.create(cred)).build();
 		try (SessionsClient sessionsClient = SessionsClient.create(settings)) {

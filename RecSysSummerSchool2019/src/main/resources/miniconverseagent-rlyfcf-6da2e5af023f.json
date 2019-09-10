@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "miniconverseagent-rlyfcf",
+  "private_key_id": "6da2e5af023ff97012b03c5b67c9c6b02b789ca2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDHpm4PSL2zq4a+\nOJKNPeAAASe1Ip2bM+icRgI0TqMko7ZCJ8/KXdXs7gxjjGm7FkYLTZv3+4+fqfMz\n/8bO1R9K2d5e6wwuNnfzxr01Tmq/B3voiQLB/WV3l6sH0iFrjpaQc74BwWJSYsKX\nxzoxg3jYFP+4x9NK+AYjVXMlFQ/wlOLLeyfR6dCIainlBcnXJa++v49t0u/BHOpZ\n8d0ijyA22Yfy1nDeJSj0BvjcneqtxG1oBU6I7fJE42s6z7D0Aj93yUyacMwO0p4u\nEgnfw53GR5xpb+5x713zr0jUIuAx/+IVA1rLpGkoLE/Nd5Ice5RUJUZujRDLCmeH\ndE3XBmIrAgMBAAECggEAHeCWpNvmY65eFjZiHBfv3yBNIGrDOjgs7cH+T3SbLn7/\nZewOSQL84h2HphgbtH8zUTq2hghT6Hlm51e2GTrEmY98GylCo+HL1qPdqc4H5HmK\nvfRPANfaaOi+FAgKr01h09E2VI3rmFemNk9+sm0x1uhhknX49UWjqYL+ncSGo6Jo\nSpTb5k9sSFcv7wNfyLp3fWcd2xAHN9KtN4ykTOsCo0wVBedGpZEwm37Wwp7yZJDX\nNN4eX067Yh3bsDwnxhV4xMQkSsZrA1zybXX8AG+ZhAdOjC6r1dGAq1TK8VuZswwP\nTqhZNoyYI23z20Vb2EU8hN4+0oBs0gOj86TQ7yoCcQKBgQD4yit1kzDTHtCKOM5D\nEXu2vhQHpD1emTdysROOh1ESd4POlq2zHwxnKpHOGSjTvpThng5Rm8vy26usMt6t\nTAlnAEcXQvi0URhrzWG1HOQ7eymjL9StNc+qI6GKZissA9XGvXTPPNplFxlyzc+b\nXk+eMxmoPD45Fw9TkKhBKpeiOwKBgQDNb66DlRmvH9J+bQ3Ok807PbU4gnHqsPM8\nRUcw0mo3tk+K3zLkzMP/aPimzbJ7dGFrt3Mcro/9ENQXkXQPv5agNbTl2UjGRJmP\npOxGwmMV0qina4+WKNadpJtrwlRkaEZd1Re0Nwz6FPXofa+v6RGrL6fmy0nB21t9\nBOKqTpHQ0QKBgC4vKZ4r8tZeVAw0u2WL61FjO8inXpUfEEIESUMeL5ikAx3ortof\nm2fTaTm/Rer46B5x/up7Z4Lv8JCI6Pl2shAi5w+UaSLgIw5wFAFRGbVJCdO3X13A\nLYrCDozopn8HPzojlXmbLFez0A+V0UJgYZtWlR68ADkM5NV4dyORypBdAoGAWQva\nshBT1LPPcptki7FHGTGTNo5cQGU42VwSEphyD/oHGmPK1J/pKPFgLjUk8xwsChu3\nWqxTn1bHB/w1OYpLCOCeq652O/KKOVg8TiN9/XyVPBSEZYsIE8bA04GlQOxt68gt\nASGHj3K8cGziVTaKQRBkD8b4Dn49dsBCW5242LECgYAdkJkR9kvmrUDo1JaDeB2D\nDkYOzQ8cgshpEmuk+b5UldNYs/vTbmQtpJkOpszMsmm20SdLut0syg8N3WcLrssx\n8UaS0EadUlkKyqqXnVHvinyzDS1B5QE1Q6y/CgXc3rJp2AL9BozlkXkwkeC0kFm+\nG9LFlKg0G6h+c5ohddWXug==\n-----END PRIVATE KEY-----\n",
+  "client_email": "miniconverseservice@miniconverseagent-rlyfcf.iam.gserviceaccount.com",
+  "client_id": "101512092256880655158",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/miniconverseservice%40miniconverseagent-rlyfcf.iam.gserviceaccount.com"
+}
