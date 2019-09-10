@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-import com.google.cloud.dialogflow.v2.QueryResult;
-
 public class DialogManager {
 	
 	private static List<RecEntity> recommendationList;
@@ -165,14 +163,14 @@ public class DialogManager {
 
 				//END CODE
 				
-				String intent = dfResult.getIntent().getDisplayName();
+				String intent = dfResult.getIntent();
+				System.out.println("Detected intent: " + intent);
 				
 				String response = dispatchIntent(userID + "", intent, text);
 				if (response == null) {
 					response = dfResult.getFulfillmentText();
 				}
 				
-				System.out.println("Detected intent: " + intent);
 				System.out.println("Fulfillment text: " + response);
 			}
 		}

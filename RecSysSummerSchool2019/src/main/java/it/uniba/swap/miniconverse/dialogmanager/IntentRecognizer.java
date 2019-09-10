@@ -1,20 +1,20 @@
 package it.uniba.swap.miniconverse.dialogmanager;
 
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URLEncoder;
 
-import com.google.api.gax.core.FixedCredentialsProvider;
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.dialogflow.v2.DetectIntentResponse;
-import com.google.cloud.dialogflow.v2.QueryInput;
-import com.google.cloud.dialogflow.v2.QueryResult;
-import com.google.cloud.dialogflow.v2.SessionName;
-import com.google.cloud.dialogflow.v2.SessionsClient;
-import com.google.cloud.dialogflow.v2.SessionsSettings;
-import com.google.cloud.dialogflow.v2.TextInput;
-import com.google.cloud.dialogflow.v2.TextInput.Builder;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /**
  * This class handles the communication with the DialogFlow agent
@@ -23,8 +23,7 @@ import com.google.cloud.dialogflow.v2.TextInput.Builder;
  */
 public class IntentRecognizer {
 	
-	private String credentialsFileName = "miniconverseagent-rlyfcf-6da2e5af023f.json";
-	private String agentName = "miniconverseagent-rlyfcf";
+	private static final String url = "http://90.147.102.235:8080/dialogflowbridge/api/detectIntent";
 	
 	/**
 	 * Forwards the message to the DialogFlow agent
@@ -35,25 +34,29 @@ public class IntentRecognizer {
 	 * @throws FileNotFoundException 
 	 */
 	public QueryResult getResponse(String userID, String text) throws FileNotFoundException, IOException {
-		ClassLoader classLoader = this.getClass().getClassLoader();
-		String credentialsPath = classLoader.getResource(credentialsFileName).getPath();
-		GoogleCredentials cred = GoogleCredentials.fromStream(new FileInputStream(credentialsPath));
-		SessionsSettings settings = SessionsSettings.newBuilder().setCredentialsProvider(FixedCredentialsProvider.create(cred)).build();
-		try (SessionsClient sessionsClient = SessionsClient.create(settings)) {
-			//String agentName = Configuration.getConfiguration().get("dialogFlowInfo").getAsJsonObject().get("agentName").getAsString();
-			SessionName session = SessionName.of(agentName, userID);
-			System.out.println("Session Path: " + session.toString());
+		
+		HttpClient client = HttpClientBuilder.create().build();
+		HttpGet request = new HttpGet(url + "?userID=" + userID + "&message=" + URLEncoder.encode(text, "UTF-8"));
+		HttpResponse response = client.execute(request);
+		
+		return new QueryResult(responseToJson(response).getAsJsonObject());
+	}
+	
+	private String responseToString(HttpResponse response) throws UnsupportedOperationException, IOException {
+		BufferedReader rd = new BufferedReader(
+				new InputStreamReader(response.getEntity().getContent()));
 
-			Builder textInput = TextInput.newBuilder().setText(text).setLanguageCode("it");
-			QueryInput queryInput = QueryInput.newBuilder().setText(textInput).build();
-		    DetectIntentResponse response = sessionsClient.detectIntent(session, queryInput);
-		    QueryResult queryResult = response.getQueryResult();
-
-	      	return queryResult;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
+		StringBuffer result = new StringBuffer();
+		String line = "";
+		while ((line = rd.readLine()) != null) {
+			result.append(line + "\n");
 		}
+		return result.toString();
+	}
+	
+	private JsonElement responseToJson(HttpResponse response) throws UnsupportedOperationException, IOException {
+		JsonElement responseJson = new JsonParser().parse(responseToString(response));
+		return responseJson;
 	}
 
 }
