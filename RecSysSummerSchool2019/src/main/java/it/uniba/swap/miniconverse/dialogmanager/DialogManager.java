@@ -22,10 +22,10 @@ public class DialogManager {
 	public static String dispatchIntent(int userID, String intent, String text) throws UnsupportedOperationException, IOException {
 		String responseText = null;
 		/* The dispatchIntent method must handle the following intents:
-		 * - preference: The user is expressing a preference (e.g. "I like The Matrix")
-		 * - recommendation: The user is asking the system to receive a recommendation (e.g. "What can I watch tonight?")
-		 * - explanation: After a recommendation, the user is asking the motivation behind it (e.g. "Why do you recommend this movie?")
-		 * - reset: Reset the user profile (e.g. "Reset")
+		 * - "preference": The user is expressing a preference (e.g. "I like The Matrix")
+		 * - "recommend": The user is asking the system to receive a recommendation (e.g. "What can I watch tonight?")
+		 * - "explanation": After a recommendation, the user is asking the motivation behind it (e.g. "Why do you recommend this movie?")
+		 * - "reset": Reset the user profile (e.g. "Reset")
 		 * Each intent may return a textual response, put it in the "responseText" variable.
 		 * 
 		 */
@@ -52,7 +52,7 @@ public class DialogManager {
 		//START WRITING CODE HERE
 		//Get the mentioned entities from the user's message and put them in the "preferences" list
 
-		//Add the preferences to the user profile and put the outcome in the "success" variable
+		//Add the preferences to the user profile and put the output in the "success" variable
 		
 		//END CODE
 		//Generate a feedback
@@ -108,7 +108,7 @@ public class DialogManager {
 		if (recommendationList == null) {
 			responseText = "No explanation is available.";
 		} else {
-			//Invoke the Service component to receive the explanation
+			//Invoke the Explanation service to receive the explanation and put it in the "responseText" variable
 			//START WRITING CODE HERE
 
 			//END CODE
@@ -160,7 +160,7 @@ public class DialogManager {
 			
 			if (text != null && !text.equals("")) {
 				QueryResult dfResult = null;
-				//Get the intent from the IntentRecognizer
+				//Get the intent from the IntentRecognizer and put it in the "dfResult" variable
 				//START WRITING CODE HERE
 
 				//END CODE
